@@ -5,52 +5,52 @@ const reservationMemberData: IReservationMemberData[] = [
   ////////////////////////////////////////////////////
   // 인철이형 계정
   ////////////////////////////////////////////////////
-  {
-    nickname: "인철이형 계정",
-    cookie: "JSESSIONID=",
-    reservationData: [
-      // 주말반
-      {
-        reservDate: "20220807",
-        timeCode: "TM046",
-        courtCode: "TC001",
-        adultCnt: 3,
-      },
-      {
-        reservDate: "20220807",
-        timeCode: "TM047",
-        courtCode: "TC001",
-        adultCnt: 3,
-      },
+  // {
+  //   nickname: "인철이형 계정",
+  //   cookie: "JSESSIONID=C8ACD94DD03B91ACA3190B0908AF4E95",
+  //   reservationData: [
+  //     // 주말반
+  //     {
+  //       reservDate: "20220807",
+  //       timeCode: "TM046",
+  //       courtCode: "TC001",
+  //       adultCnt: 3,
+  //     },
+  //     {
+  //       reservDate: "20220807",
+  //       timeCode: "TM047",
+  //       courtCode: "TC001",
+  //       adultCnt: 3,
+  //     },
 
-      {
-        reservDate: "20220814",
-        timeCode: "TM046",
-        courtCode: "TC001",
-        adultCnt: 3,
-      },
-      {
-        reservDate: "20220814",
-        timeCode: "TM047",
-        courtCode: "TC001",
-        adultCnt: 3,
-      },
+  //     {
+  //       reservDate: "20220814",
+  //       timeCode: "TM046",
+  //       courtCode: "TC001",
+  //       adultCnt: 3,
+  //     },
+  //     {
+  //       reservDate: "20220814",
+  //       timeCode: "TM047",
+  //       courtCode: "TC001",
+  //       adultCnt: 3,
+  //     },
 
-      // 평일반
-      {
-        reservDate: "20220804",
-        timeCode: "TM052",
-        courtCode: "TC001",
-        adultCnt: 3,
-      },
-      {
-        reservDate: "20220809",
-        timeCode: "TM052",
-        courtCode: "TC001",
-        adultCnt: 3,
-      },
-    ],
-  },
+  //     // 평일반
+  //     {
+  //       reservDate: "20220804",
+  //       timeCode: "TM052",
+  //       courtCode: "TC001",
+  //       adultCnt: 3,
+  //     },
+  //     {
+  //       reservDate: "20220809",
+  //       timeCode: "TM052",
+  //       courtCode: "TC001",
+  //       adultCnt: 3,
+  //     },
+  //   ],
+  // },
 
   ////////////////////////////////////////////////////
   // 다른 계정
@@ -60,30 +60,30 @@ const reservationMemberData: IReservationMemberData[] = [
     cookie: "JSESSIONID=",
     reservationData: [
       // 주말반
-      {
-        reservDate: "20220807",
-        timeCode: "TM046",
-        courtCode: "TC002",
-        adultCnt: 2,
-      },
-      {
-        reservDate: "20220807",
-        timeCode: "TM047",
-        courtCode: "TC002",
-        adultCnt: 2,
-      },
-      {
-        reservDate: "20220814",
-        timeCode: "TM046",
-        courtCode: "TC002",
-        adultCnt: 2,
-      },
-      {
-        reservDate: "20220814",
-        timeCode: "TM047",
-        courtCode: "TC002",
-        adultCnt: 2,
-      },
+      // {
+      //   reservDate: "20220805",
+      //   timeCode: "TM056",
+      //   courtCode: "TC002",
+      //   adultCnt: 2,
+      // },
+      // {
+      //   reservDate: "20220807",
+      //   timeCode: "TM049",
+      //   courtCode: "TC002",
+      //   adultCnt: 2,
+      // },
+      // {
+      //   reservDate: "20220814",
+      //   timeCode: "TM048",
+      //   courtCode: "TC002",
+      //   adultCnt: 2,
+      // },
+      // {
+      //   reservDate: "20220814",
+      //   timeCode: "TM049",
+      //   courtCode: "TC002",
+      //   adultCnt: 2,
+      // },
     ],
   },
 ];
@@ -112,7 +112,7 @@ async function start() {
             timeCode: reservationDataOne.timeCode,
             fromTime: FromTime[reservationDataOne.timeCode],
             toTime: ToTime[reservationDataOne.timeCode],
-            menuId: "Resv",
+            menuId: "InsideResv",
           },
           cookie: reservationMemberDataOne.cookie,
         });
@@ -123,7 +123,7 @@ async function start() {
           data: {
             courtCode: reservationDataOne.courtCode,
             courtNo: CourtNo[reservationDataOne.courtCode],
-            menuId: "Resv",
+            menuId: "InsideResv",
           },
           cookie: reservationMemberDataOne.cookie,
         });
@@ -134,7 +134,7 @@ async function start() {
           data: {
             useTypeCd: "002",
             useTypeNm: "연습이용",
-            menuId: "Resv",
+            menuId: "InsideResv",
           },
           cookie: reservationMemberDataOne.cookie,
         });
@@ -149,7 +149,7 @@ async function start() {
             gCardCnt: "0",
             mChildCnt: "0",
             useLightYn: "N",
-            menuId: "Resv",
+            menuId: "InsideResv",
           },
           cookie: reservationMemberDataOne.cookie,
         });
@@ -159,7 +159,7 @@ async function start() {
           url: "/user/tennis/tennisReservNext4Check.do",
           data: {
             deal_type: "CARD",
-            menuId: "Resv",
+            menuId: "InsideResv",
           },
           cookie: reservationMemberDataOne.cookie,
         });
@@ -213,15 +213,23 @@ interface IReservationData {
   /**
    * 예약 시간
    */
-  timeCode:
-    | "TM045" // 06:00 ~ 08:00
-    | "TM046" // 08:00 ~ 10:00
-    | "TM047" // 10:00 ~ 12:00
-    | "TM048" // 12:00 ~ 14:00
-    | "TM049" // 14:00 ~ 16:00
-    | "TM050" // 16:00 ~ 18:00
-    | "TM051" // 18:00 ~ 20:00
-    | "TM052"; // 20:00 ~ 22:00
+  timeCode: // | "TM045" // 06:00 ~ 08:00
+  // | "TM046" // 08:00 ~ 10:00
+  // | "TM047" // 10:00 ~ 12:00
+  // | "TM048" // 12:00 ~ 14:00
+  // | "TM049" // 14:00 ~ 16:00
+  // | "TM050" // 16:00 ~ 18:00
+  // | "TM051" // 18:00 ~ 20:00
+  // | "TM052"; // 20:00 ~ 22:00
+  | "TM053" // 06:00 ~ 08:00
+    | "TM054" // 08:00 ~ 10:00
+    | "TM055" // 10:00 ~ 12:00
+    | "TM056" // 12:00 ~ 14:00
+    | "TM057" // 14:00 ~ 16:00
+    | "TM058" // 16:00 ~ 18:00
+    | "TM059" // 18:00 ~ 20:00
+    | "TM060"; // 20:00 ~ 22:00
+
   // fromTime: "18:00",
   //   toTime: "20:00",
 
@@ -257,24 +265,24 @@ interface IReservationData {
 }
 
 enum FromTime {
-  "TM045" = "06:00",
-  "TM046" = "08:00",
-  "TM047" = "10:00",
-  "TM048" = "12:00",
-  "TM049" = "14:00",
-  "TM050" = "16:00",
-  "TM051" = "18:00",
-  "TM052" = "20:00",
+  "TM053" = "06:00",
+  "TM054" = "08:00",
+  "TM055" = "10:00",
+  "TM056" = "12:00",
+  "TM057" = "14:00",
+  "TM058" = "16:00",
+  "TM059" = "18:00",
+  "TM060" = "20:00",
 }
 enum ToTime {
-  "TM045" = "08:00",
-  "TM046" = "10:00",
-  "TM047" = "12:00",
-  "TM048" = "14:00",
-  "TM049" = "16:00",
-  "TM050" = "18:00",
-  "TM051" = "20:00",
-  "TM052" = "22:00",
+  "TM053" = "08:00",
+  "TM054" = "10:00",
+  "TM055" = "12:00",
+  "TM056" = "14:00",
+  "TM057" = "16:00",
+  "TM058" = "18:00",
+  "TM059" = "20:00",
+  "TM060" = "22:00",
 }
 
 enum CourtNo {
