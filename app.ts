@@ -5,87 +5,114 @@ const reservationMemberData: IReservationMemberData[] = [
   ////////////////////////////////////////////////////
   // 인철이형 계정
   ////////////////////////////////////////////////////
-  // {
-  //   nickname: "인철이형 계정",
-  //   cookie: "JSESSIONID=C8ACD94DD03B91ACA3190B0908AF4E95",
-  //   reservationData: [
-  //     // 주말반
-  //     {
-  //       reservDate: "20220807",
-  //       timeCode: "TM046",
-  //       courtCode: "TC001",
-  //       adultCnt: 3,
-  //     },
-  //     {
-  //       reservDate: "20220807",
-  //       timeCode: "TM047",
-  //       courtCode: "TC001",
-  //       adultCnt: 3,
-  //     },
+  {
+    nickname: "인철이형 계정",
+    cookie: "",
+    reservationData: [
+      // 주말반
+      {
+        reservDate: "20220821",
+        timeCode: "TM055",
+        courtCode: "TC009",
+        adultCnt: 4,
+      },
+      {
+        reservDate: "20220821",
+        timeCode: "TM056",
+        courtCode: "TC009",
+        adultCnt: 4,
+      },
+      // {
+      //   reservDate: "20220821",
+      //   timeCode: "TM056",
+      //   courtCode: "TC003",
+      //   adultCnt: 3,
+      // },
 
-  //     {
-  //       reservDate: "20220814",
-  //       timeCode: "TM046",
-  //       courtCode: "TC001",
-  //       adultCnt: 3,
-  //     },
-  //     {
-  //       reservDate: "20220814",
-  //       timeCode: "TM047",
-  //       courtCode: "TC001",
-  //       adultCnt: 3,
-  //     },
+      {
+        reservDate: "20220828",
+        timeCode: "TM055",
+        courtCode: "TC009",
+        adultCnt: 4,
+      },
+      {
+        reservDate: "20220828",
+        timeCode: "TM056",
+        courtCode: "TC009",
+        adultCnt: 4,
+      },
+      // {
+      //   reservDate: "20220828",
+      //   timeCode: "TM056",
+      //   courtCode: "TC003",
+      //   adultCnt: 3,
+      // },
 
-  //     // 평일반
-  //     {
-  //       reservDate: "20220804",
-  //       timeCode: "TM052",
-  //       courtCode: "TC001",
-  //       adultCnt: 3,
-  //     },
-  //     {
-  //       reservDate: "20220809",
-  //       timeCode: "TM052",
-  //       courtCode: "TC001",
-  //       adultCnt: 3,
-  //     },
-  //   ],
-  // },
+      // // 평일반
+      {
+        reservDate: "20220816",
+        timeCode: "TM060",
+        courtCode: "TC003",
+        adultCnt: 3,
+        useLightYn: "Y",
+      },
+      {
+        reservDate: "20220823",
+        timeCode: "TM060",
+        courtCode: "TC003",
+        adultCnt: 3,
+        useLightYn: "Y",
+      },
+      {
+        reservDate: "20220830",
+        timeCode: "TM060",
+        courtCode: "TC003",
+        adultCnt: 3,
+        useLightYn: "Y",
+      },
+      // {
+      //   reservDate: "20220809",
+      //   timeCode: "TM052",
+      //   courtCode: "TC001",
+      //   adultCnt: 3,
+      // },
+    ],
+  },
 
   ////////////////////////////////////////////////////
   // 다른 계정
   ////////////////////////////////////////////////////
-  {
-    nickname: "형수님 계정",
-    cookie: "JSESSIONID=",
-    reservationData: [
-      // 주말반
-      // {
-      //   reservDate: "20220805",
-      //   timeCode: "TM056",
-      //   courtCode: "TC002",
-      //   adultCnt: 2,
-      // },
-      // {
-      //   reservDate: "20220807",
-      //   timeCode: "TM049",
-      //   courtCode: "TC002",
-      //   adultCnt: 2,
-      // },
-      // {
-      //   reservDate: "20220814",
-      //   timeCode: "TM048",
-      //   courtCode: "TC002",
-      //   adultCnt: 2,
-      // },
-      // {
-      //   reservDate: "20220814",
-      //   timeCode: "TM049",
-      //   courtCode: "TC002",
-      //   adultCnt: 2,
-      // },
-    ],
-  },
+  // {
+  //   nickname: "형수님 계정",
+  //   cookie: "JSESSIONID=",
+  //   reservationData: [
+  //     // 주말반
+  //     // {
+  //     //   reservDate: "20220805",
+  //     //   timeCode: "TM056",
+  //     //   courtCode: "TC002",
+  //     //   adultCnt: 2,
+  //     // },
+  //     // {
+  //     //   reservDate: "20220807",
+  //     //   timeCode: "TM049",
+  //     //   courtCode: "TC002",
+  //     //   adultCnt: 2,
+  //     // },
+  //     // {
+  //     //   reservDate: "20220814",
+  //     //   timeCode: "TM048",
+  //     //   courtCode: "TC002",
+  //     //   adultCnt: 2,
+  //     // },
+  //     // {
+  //     //   reservDate: "20220814",
+  //     //   timeCode: "TM049",
+  //     //   courtCode: "TC002",
+  //     //   adultCnt: 2,
+  //     // },
+  //   ],
+  // },
 ];
 
 start();
@@ -148,7 +175,7 @@ async function start() {
             oldManCnt: "0",
             gCardCnt: "0",
             mChildCnt: "0",
-            useLightYn: "N",
+            useLightYn: reservationDataOne.useLightYn || "N",
             menuId: "InsideResv",
           },
           cookie: reservationMemberDataOne.cookie,
@@ -211,9 +238,10 @@ interface IReservationData {
   reservDate: string;
 
   /**
-   * 예약 시간
+   * 예약 시간 - 달마다 코드 바뀜
    */
-  timeCode: // | "TM045" // 06:00 ~ 08:00
+  timeCode: // --------------7월--------------
+  // | "TM045" // 06:00 ~ 08:00
   // | "TM046" // 08:00 ~ 10:00
   // | "TM047" // 10:00 ~ 12:00
   // | "TM048" // 12:00 ~ 14:00
@@ -221,6 +249,7 @@ interface IReservationData {
   // | "TM050" // 16:00 ~ 18:00
   // | "TM051" // 18:00 ~ 20:00
   // | "TM052"; // 20:00 ~ 22:00
+  // --------------8월--------------
   | "TM053" // 06:00 ~ 08:00
     | "TM054" // 08:00 ~ 10:00
     | "TM055" // 10:00 ~ 12:00
@@ -229,6 +258,15 @@ interface IReservationData {
     | "TM058" // 16:00 ~ 18:00
     | "TM059" // 18:00 ~ 20:00
     | "TM060"; // 20:00 ~ 22:00
+  // --------------9월--------------
+  // | "TM061" // 06:00 ~ 08:00
+  //   | "TM062" // 08:00 ~ 10:00
+  //   | "TM063" // 10:00 ~ 12:00
+  //   | "TM064" // 12:00 ~ 14:00
+  //   | "TM065" // 14:00 ~ 16:00
+  //   | "TM066" // 16:00 ~ 18:00
+  //   | "TM067" // 18:00 ~ 20:00
+  //   | "TM068"; // 20:00 ~ 22:00
 
   // fromTime: "18:00",
   //   toTime: "20:00",
@@ -262,6 +300,11 @@ interface IReservationData {
    * 성인 인원
    */
   adultCnt: number;
+
+  /**
+   * 야간조명 사용여부
+   */
+  useLightYn?: "Y" | "N";
 }
 
 enum FromTime {
